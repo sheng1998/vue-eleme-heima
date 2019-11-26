@@ -1,0 +1,41 @@
+function addImg() {
+    var img_id = 1;
+    var one = ["HomeLife", "PhotographyDesign", "StarBeauty", "SpaceDesign",
+        "ApartmentDecoration", "AdvertisingPhotography", "PhotographyLearning",
+        "CameraEquipment", "StarPortrait", "PureAndSweet", "ClassicBeauty"
+    ];
+    var title = [
+        "七绝·望庐山瀑布",
+        "七绝·早发白帝城",
+        "七绝·赠汪伦",
+        "七绝·客中行",
+        "七绝·送孟浩然之广陵 "
+    ];
+    var zhaiyao = [
+        "日照香炉生紫烟,遥看瀑布挂前川。 飞流直下三千尺,疑是银河落九天。",
+        "朝辞白帝彩云间,千里江陵一日还。 两岸猿声啼不尽,轻舟已过万重山。",
+        "李白乘舟将欲行,忽闻岸上踏歌声。 桃花潭水深千尺,不及汪伦送我情。",
+        "兰陵美酒郁金香,玉碗盛来琥珀光。 但使主人能醉客,不知何处是他乡。",
+        "故人西辞黄鹤楼,烟花三月下扬州。 孤帆远影碧山尽,唯见长江天际流。"
+    ]
+
+    for (let j = 0; j < 11; j++) {
+        var readDir = fs.readdirSync("./public/img/imgcategory/" + one[j]);
+        for (let i = 0; i < readDir.length; i++) {
+            new Img({
+                img_id: img_id++,
+                imgcategory_id: j + 1,
+                img_url: `http://127.0.0.1:3030/img/imgcategory/${one[j]}/${readDir[i]}`,
+                title: title[(i + 1) * (j + 2) % 5],
+                zhaiyao: zhaiyao[(i + 1) * (j + 2) % 5]
+            }).save(function (err, ret, next) {
+                if (err) {
+                    console.log('保存失败');
+                } else {
+                    console.log(ret);
+                }
+            })
+        }
+    }
+}
+addImg();

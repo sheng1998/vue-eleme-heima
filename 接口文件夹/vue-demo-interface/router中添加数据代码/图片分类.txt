@@ -1,0 +1,23 @@
+function addImgcategory() {
+    var category = ["家居生活", "摄影设计", "明星美女", "空间设计", "户型装饰", "广告摄影",
+        "摄影学习", "摄影器材", "明星写真", "清纯甜美", "古典美女"
+    ];
+    var describe = ["HomeLife", "PhotographyDesign", "StarBeauty", "SpaceDesign",
+        "ApartmentDecoration", "AdvertisingPhotography", "PhotographyLearning",
+        "CameraEquipment", "StarPortrait", "PureAndSweet", "ClassicBeauty"
+    ];
+    for (let i = 1; i <= 11; i++) {
+        new Imgcategory({
+            id: i,
+            title: category[i - 1],
+            describe:describe[i-1]
+        }).save(function (err, ret, next) {
+            if (err) {
+                console.log('保存失败');
+            } else {
+                console.log(ret);
+            }
+        })
+    }
+}
+addImgcategory();

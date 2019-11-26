@@ -1,0 +1,19 @@
+router.get('/addNews', function (req, res, next) {
+    for (let i = 1; i <= 20; i++) {
+        new New({
+            add_time: new Date(),
+            click: 0,
+            id:i,
+            img_url:`http://127.0.0.1:3030/img/new_img/${i}.jpg`,
+            title:"春眠不觉晓",
+            zhaiyao:"七绝·望庐山瀑布 日照香炉生紫烟,遥看瀑布挂前川。 飞流直下三千尺,疑是银河落九天"
+        })
+        .save(function (err, ret, next) {
+            if (err) {
+                console.log('保存失败');
+            } else {
+                console.log(ret);
+            }
+        })
+    }
+})

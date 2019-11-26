@@ -1,0 +1,31 @@
+function addGoodsDesc() {
+    var id = 1;
+    var title = [
+        "猫还能从它的牙齿来判断它的年龄",
+        "猫的九命也只是传说",
+        "强大的平衡能力",
+        "猫 （食肉目猫科动物）",
+        "成年猫咪的牙齿共30枚。幼年猫咪的牙齿共26枚。",
+        "9～16岁门齿脱落犬齿不齐"
+    ];
+    var content = `
+    <p>Mint -UI是饿了么前端团队推出的移动端UI框架</p>
+    <p>在github上有13200个star，2912个fork。也算是比较知名和流行的UI框架了，是值得学习和尝试的。</p>
+    <p>不过官网上的文档例子不是很全面，建议下载他们提供的example来学习。</p>
+    <img style="width:100%;padding:10px;" src="http://127.0.0.1:3030/img/order/nwhdgh.jpg" />
+    `;
+    for (let i = 0; i < 100; i++) {
+        new goodsDesc({
+            id: id++,
+            title: title[i % 6],
+            content:content
+        }).save(function (err2, ret, next) {
+            if (err2) {
+                console.log('保存失败');
+            } else {
+                console.log(ret);
+            }
+        })
+    }
+}
+// addGoodsDesc();

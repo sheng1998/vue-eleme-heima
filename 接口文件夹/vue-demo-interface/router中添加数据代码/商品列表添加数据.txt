@@ -1,0 +1,31 @@
+function addShopcarlist() {
+    var id = [4, 8, 12];
+    var title = [
+        "「人民日报」【夜读】无论和谁在一起，请记住这四条忠告",
+        "「人民日报」4块钱也不放过！餐馆关门后，老板依然每天到店做这事…",
+        "「人民日报」治疗艾滋病白血病的新方法冲上热搜！有个人却看不到了…"
+    ];
+    var sell_price = [1299, 2999, 1029];
+    var thumb_path = [
+        "http://127.0.0.1:3030/img/imgcategory/StarBeauty/ewr.jpg",
+        "http://127.0.0.1:3030/img/imgcategory/StarBeauty/4ewhygse.jpg",
+        "http://127.0.0.1:3030/img/imgcategory/StarBeauty/rw4.jpg"
+    ];
+    var Num = [3, 1, 2];
+    for (let i = 0; i < 3; i++) {
+        new Shopcarlist({
+            id: id[i],
+            title: title[i],
+            sell_price: sell_price[i],
+            thumb_path: thumb_path[i],
+            Num: Num[i]
+        }).save(function (err, ret, next) {
+            if (err) {
+                console.log('保存失败');
+            } else {
+                console.log(ret);
+            }
+        })
+    }
+}
+// addShopcarlist();

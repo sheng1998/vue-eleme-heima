@@ -1,0 +1,42 @@
+function addGoods() {
+    var readDir = fs.readdirSync("./public/img/goods");
+    var id = 1;
+    var title = [
+        "猫还能从它的牙齿来判断它的年龄",
+        "猫的九命也只是传说",
+        "强大的平衡能力",
+        "猫 （食肉目猫科动物）",
+        "成年猫咪的牙齿共30枚。幼年猫咪的牙齿共26枚。",
+        "9～16岁门齿脱落犬齿不齐"
+    ]; //6
+    var zhaiyao = [
+        "猫行动敏捷，善跳跃。吃鱼，鼠，兔等。",
+        "猫的牙齿从两边往中间分别是：",
+        "上排——臼齿大臼齿前臼齿犬齿6颗门齿",
+        "下排——大臼齿前臼齿犬齿6颗门齿",
+        "猫的身体分为头、颈、躯干、四肢和尾五部分，大多数部位披毛，少数为无毛猫。",
+        "猫的趾底有脂肪质肉垫，因而行走无声，捕鼠时不会惊跑鼠"
+    ]; //6
+    var sell_price = [1999, 999, 899, 1299, 2999, 1899, 599, 1099, 789, 1000, 8888, 2599, 2399, 1239, 699, 1000, 5780];
+    var market_price = [2399, 1299, 999, 1309, 3099, 1909, 619, 1119, 799, 1099, 9000, 2799, 2459, 1259, 759, 2509, 6500];
+    var stock_quantity = [354, 1524, 8787, 545, 1542, 8712, 121, 545, 45, 4455, 154, 999]; //12
+    for (let i = 0; i < readDir.length; i++) {
+        new Goods({
+            id: id++,
+            title: title[i % 6],
+            zhaiyao: zhaiyao[i % 6],
+            img_url: 'http://127.0.0.1:3030/img/goods/' + readDir[i],
+            sell_price: sell_price[i % 17],
+            market_price: market_price[i % 17],
+            stock_quantity: stock_quantity[i % 12],
+            goods_no:'SD'+uuid.v4()
+        }).save(function (err2, ret, next) {
+            if (err2) {
+                console.log('保存失败');
+            } else {
+                console.log(ret);
+            }
+        })
+    }
+}
+addGoods();

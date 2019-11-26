@@ -1,0 +1,25 @@
+function addThumimages() {
+    var readDir = fs.readdirSync("./public/img/imgcategory/thumimages");
+
+    for (let i = 0; i < readDir.length; i++) {
+        Imgcategory.find({
+            describe: readDir[i]
+        }, function (err, data) {
+            var readDir2 = fs.readdirSync("./public/img/imgcategory/thumimages/" + readDir[i]);
+            // console.log(readDir2);
+            for (let j = 0; j < readDir2.length; j++) {
+                new Thumimages({
+                    id: data[0].id,
+                    src: 'http://127.0.0.1:3030/img/imgcategory/thumimages/' + readDir[i] + '/' + readDir2[j]
+                }).save(function (err2, ret, next) {
+                    if (err2) {
+                        console.log('保存失败');
+                    } else {
+                        console.log(ret);
+                    }
+                })
+            }
+        });
+    }
+}
+addThumimages();

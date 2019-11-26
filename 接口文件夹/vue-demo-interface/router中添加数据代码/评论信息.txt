@@ -1,0 +1,17 @@
+router.get('/addcomment', function (req, res, next) {
+    for(let i = 0;i<20;i++){
+        new Comment({
+            sort: "photo",
+            art_id: 1,
+            user_name: "匿名用户",
+            add_time: new Date(),
+            content: "七绝·客中行 兰陵美酒郁金香,玉碗盛来琥珀光。 但使主人能醉客,不知何处是他乡"
+        }).save(function (err, ret, next) {
+            if (err) {
+                console.log('保存失败');
+            } else {
+                console.log(ret);
+            }
+        })
+    }
+})

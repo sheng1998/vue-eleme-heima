@@ -1,0 +1,35 @@
+router.get('/addRotation', function (req, res, next) {
+    new Home({
+            url: 'https://www.baidu.com/',
+            img: 'http://127.0.0.1:3030/img/vue.jpg'
+        })
+        .save(function (err, ret, next) {
+            if (err) {
+                console.log('保存失败');
+            } else {
+                console.log(ret);
+            }
+        }),
+        new Home({
+            url: 'https://www.baidu.com/',
+            img: 'http://127.0.0.1:3030/img/vuetest.jpg'
+        })
+        .save(function (err, ret, next) {
+            if (err) {
+                console.log('保存失败');
+            } else {
+                console.log(ret);
+            }
+        }),
+        new Home({
+            url: 'https://www.baidu.com/',
+            img: 'http://127.0.0.1:3030/img/vuelogo.jpg'
+        })
+        .save(function (err, ret, next) {
+            if (err) {
+                console.log('保存失败');
+            } else {
+                console.log(ret);
+            }
+        })
+})
